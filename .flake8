@@ -1,0 +1,2 @@
+[flake8_import_linter]
+forbidden_modules = "pytest", "unittest"
