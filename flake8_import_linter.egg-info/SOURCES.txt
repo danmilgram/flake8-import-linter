@@ -1,3 +1,5 @@
+LICENSE
+README.md
 flake8_import_linter.py
 setup.cfg
 setup.py
@@ -5,4 +7,6 @@ flake8_import_linter.egg-info/PKG-INFO
 flake8_import_linter.egg-info/SOURCES.txt
 flake8_import_linter.egg-info/dependency_links.txt
 flake8_import_linter.egg-info/entry_points.txt
+flake8_import_linter.egg-info/not-zip-safe
+flake8_import_linter.egg-info/requires.txt
 flake8_import_linter.egg-info/top_level.txt

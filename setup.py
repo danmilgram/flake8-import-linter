@@ -24,8 +24,8 @@ setup(
             'IMP=flake8_import_linter:Plugin',
         ],
     },
-    url='https://github.com/best-doctor/flake8-annotations-complexity',
+    url='https://github.com/danmilgram/flake8-import-linter',
     license='MIT',
-    py_modules=[package_name],
+    py_modules=['flake8_import_linter'],
     zip_safe=False,
 )

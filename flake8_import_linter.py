@@ -1,5 +1,5 @@
 import ast
-import ConfigParser as configparser
+from configparser import ConfigParser
 
 
 class Visitor(ast.NodeVisitor):
@@ -27,7 +27,7 @@ class OptionManager(object):
         self.config = self.load_config(".flake8")
 
     def load_config(self, config_file_path):
-        config = configparser.ConfigParser()
+        config = ConfigParser()
         config.read(config_file_path)
 
         config_values = {}
