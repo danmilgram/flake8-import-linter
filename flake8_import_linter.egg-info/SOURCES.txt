@@ -1,7 +1,6 @@
 LICENSE
 README.md
 flake8_import_linter.py
-setup.cfg
 setup.py
 flake8_import_linter.egg-info/PKG-INFO
 flake8_import_linter.egg-info/SOURCES.txt

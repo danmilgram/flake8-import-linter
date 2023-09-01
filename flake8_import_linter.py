@@ -45,7 +45,7 @@ class OptionManager(object):
 
 class Plugin:
     name = __name__
-    version = "0.1.5"
+    version = "0.1.6"
 
     def __init__(self, tree):
         self._tree = tree
@@ -56,4 +56,4 @@ class Plugin:
         visitor.visit(self._tree)
 
         for line, col in visitor.errors:
-            yield line, col, 'IMP100 forbiden import', type(self)
+            yield line, col, 'IMP100 forbidden import', type(self)
