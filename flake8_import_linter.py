@@ -12,8 +12,6 @@ class Visitor(ast.NodeVisitor):
                                     .replace("'",'') \
                                     .replace('\n','') \
                                     .split(',')
-        
-        print(self.forbidden_modules)
 
     def visit_Import(self, node):
         if self.forbidden_modules:
@@ -53,7 +51,7 @@ class OptionManager(object):
 
 class Plugin:
     name = __name__
-    version = '0.1.9'
+    version = '0.1.10'
 
     def __init__(self, tree):
         self._tree = tree
