@@ -8,19 +8,21 @@ class Visitor(ast.NodeVisitor):
         self.forbidden_modules = options.get("forbidden_modules")
 
     def visit_Import(self, node):
-        for alias in node.names:
-            if alias.name in self.forbidden_modules:
-                self.errors.append((node.lineno, node.col_offset))
+        if self.forbidden_modules:
+            for alias in node.names:
+                if alias.name in self.forbidden_modules:
+                    self.errors.append((node.lineno, node.col_offset))
+
         self.generic_visit(node)
 
     def visit_ImportFrom(self, node):
-        if node.module:
+        if self.forbidden_modules and node.module:
             if node.module in self.forbidden_modules:
                 self.errors.append((node.lineno, node.col_offset))
             elif node.module.split(".")[0] in self.forbidden_modules:
                 self.errors.append((node.lineno, node.col_offset))
 
-            self.generic_visit(node)
+        self.generic_visit(node)
 
 
 class OptionManager(object):
@@ -43,7 +45,7 @@ class OptionManager(object):
 
 class Plugin:
     name = __name__
-    version = "0.1.0"
+    version = "0.1.5"
 
     def __init__(self, tree):
         self._tree = tree
