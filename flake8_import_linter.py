@@ -45,7 +45,7 @@ class OptionManager(object):
 
 class Plugin:
     name = __name__
-    version = "0.1.6"
+    version = "0.1.7"
 
     def __init__(self, tree):
         self._tree = tree
