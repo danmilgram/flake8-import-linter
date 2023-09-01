@@ -10,7 +10,7 @@ It works for both python2 and python3 since it only uses ast and configparser li
    
     add "flake8_import_linter" section
 
-    add "forbidden_modules" config - (comma separeted, one line, without " and ' )
+    add "forbidden_modules" config
 
     example:
    

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: flake8-import-linter
-Version: 0.1.8
+Version: 0.1.9
 Summary: Flake8 plugin that checks for forbidden imports in your code
 Home-page: https://github.com/danmilgram/flake8-import-linter
 Author: Dan Milgram
@@ -18,7 +18,7 @@ Description: # Flake8 Import Linter
            
             add "flake8_import_linter" section
         
-            add "forbidden_modules" config - (comma separeted, one line, without " and ' )
+            add "forbidden_modules" config
         
             example:
            

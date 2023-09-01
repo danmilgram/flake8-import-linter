@@ -5,10 +5,15 @@ from configparser import ConfigParser
 class Visitor(ast.NodeVisitor):
     def __init__(self, options):
         self.errors = []
-        self.forbidden_modules = options.get("forbidden_modules") \
+        self.forbidden_modules = options.get('forbidden_modules') \
                                     .encode('ascii', 'ignore') \
-                                    .replace(" ","") \
-                                    .split(",")
+                                    .replace(' ','') \
+                                    .replace('"','') \
+                                    .replace("'",'') \
+                                    .replace('\n','') \
+                                    .split(',')
+        
+        print(self.forbidden_modules)
 
     def visit_Import(self, node):
         if self.forbidden_modules:
@@ -22,7 +27,7 @@ class Visitor(ast.NodeVisitor):
         if self.forbidden_modules and node.module:
             if node.module in self.forbidden_modules:
                 self.errors.append((node.lineno, node.col_offset))
-            elif node.module.split(".")[0] in self.forbidden_modules:
+            elif node.module.split('.')[0] in self.forbidden_modules:
                 self.errors.append((node.lineno, node.col_offset))
 
         self.generic_visit(node)
@@ -30,7 +35,7 @@ class Visitor(ast.NodeVisitor):
 
 class OptionManager(object):
     def __init__(self):
-        self.config = self.load_config(".flake8")
+        self.config = self.load_config('.flake8')
 
     def load_config(self, config_file_path):
         config = ConfigParser()
@@ -38,9 +43,9 @@ class OptionManager(object):
 
         config_values = {}
         if config.has_section(__name__):
-            if config.has_option(__name__, "forbidden_modules"):
-                config_values["forbidden_modules"] = config.get(
-                    __name__, "forbidden_modules"
+            if config.has_option(__name__, 'forbidden_modules'):
+                config_values['forbidden_modules'] = config.get(
+                    __name__, 'forbidden_modules'
                 )
 
         return config_values
@@ -48,7 +53,7 @@ class OptionManager(object):
 
 class Plugin:
     name = __name__
-    version = "0.1.8"
+    version = '0.1.9'
 
     def __init__(self, tree):
         self._tree = tree

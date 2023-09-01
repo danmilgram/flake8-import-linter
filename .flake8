@@ -1,2 +1,15 @@
 [flake8_import_linter]
-forbidden_modules = Faker, flaky, freezegun, mock, mockcache, pytest, pytest-test-groups, pytest-cov, pytest-flakes, requests_mock, unittest, unittest2, webtest
+forbidden_modules =
+    faker,
+    flaky,
+    freezegun,
+    mock,
+    mockcache,
+    pytest,
+    pytest-test-groups,
+    pytest-cov,
+    pytest-flakes,
+    requests_mock,
+    unittest,
+    unittest2,
+    webtest

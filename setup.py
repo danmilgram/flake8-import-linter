@@ -21,7 +21,7 @@ setup(
     ],
     include_package_data=True,
     keywords='flake8 import linter',
-    version='0.1.8',
+    version='0.1.9',
     author='Dan Milgram',
     author_email='ddmilgram@gmail.com',
     install_requires=['flake8', 'wheel'],
