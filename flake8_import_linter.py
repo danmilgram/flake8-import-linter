@@ -5,7 +5,7 @@ from configparser import ConfigParser
 class Visitor(ast.NodeVisitor):
     def __init__(self, options):
         self.errors = []
-        self.forbidden_modules = options["forbidden_modules"]
+        self.forbidden_modules = options.get("forbidden_modules")
 
     def visit_Import(self, node):
         for alias in node.names:
@@ -14,12 +14,13 @@ class Visitor(ast.NodeVisitor):
         self.generic_visit(node)
 
     def visit_ImportFrom(self, node):
-        if node.module in self.forbidden_modules:
-            self.errors.append((node.lineno, node.col_offset))
-        elif node.module.split(".")[0] in self.forbidden_modules:
-            self.errors.append((node.lineno, node.col_offset))
+        if node.module:
+            if node.module in self.forbidden_modules:
+                self.errors.append((node.lineno, node.col_offset))
+            elif node.module.split(".")[0] in self.forbidden_modules:
+                self.errors.append((node.lineno, node.col_offset))
 
-        self.generic_visit(node)
+            self.generic_visit(node)
 
 
 class OptionManager(object):
