@@ -5,7 +5,10 @@ from configparser import ConfigParser
 class Visitor(ast.NodeVisitor):
     def __init__(self, options):
         self.errors = []
-        self.forbidden_modules = options.get("forbidden_modules")
+        self.forbidden_modules = options.get("forbidden_modules") \
+                                    .encode('ascii', 'ignore') \
+                                    .replace(" ","") \
+                                    .split(",")
 
     def visit_Import(self, node):
         if self.forbidden_modules:
@@ -45,7 +48,7 @@ class OptionManager(object):
 
 class Plugin:
     name = __name__
-    version = "0.1.7"
+    version = "0.1.8"
 
     def __init__(self, tree):
         self._tree = tree

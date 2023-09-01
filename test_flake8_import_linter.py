@@ -15,7 +15,7 @@ class TestFlake8ImportLinter(TestCase):
             err_count = 1
             self.assertTrue(x[0] == 1)
             self.assertTrue(x[1] == 0)
-            self.assertTrue(x[2] == "IMP100 forbiden import")
+            self.assertTrue(x[2] == "IMP100 forbidden import")
 
         self.assertTrue(err_count == 1)
 
@@ -43,3 +43,6 @@ class TestFlake8ImportLinter(TestCase):
 
     def test_no_file(self):
         self._expect_no_error("")
+
+    def test_substring_module(self):
+        self._expect_no_error("import re")    
